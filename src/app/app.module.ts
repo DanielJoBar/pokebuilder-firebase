@@ -15,6 +15,7 @@ import { HttpClientProvider } from './core/servicies/http-client.provider';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { SharedModule } from './shared/shared.module';
+import { environment } from 'src/environments/environment';
 
 function AuthServiceFactory(jwtSvc: JwtService, apiSvc: ApiService) {
   return new AuthStrapiService(jwtSvc, apiSvc);
@@ -45,6 +46,9 @@ function HttpClientWebFactory(http: HttpClient) {
     {
       provide: 'afterLogin',
       useValue:'/home'
+    },
+    {
+      provide: 'firebase-config',useValue:environment.firebaseConfig
     },
   ],
   bootstrap: [AppComponent],
